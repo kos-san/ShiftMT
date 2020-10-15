@@ -1,0 +1,25 @@
+.signup-header {
+  margin: 20px 0px;
+  text-align: center;
+  font-size: 25px;
+  background-color: blanchedalmond;
+}
+
+.field {
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  width: 180px;
+}
+
+.signup-content {
+  background-color: lightgray;
+}
+
+.signup-form {
+  width: 80%;
+  padding-left: 50px;
+  margin: 0 auto;
+  border:2px solid lime;
+  max-width: 300px;
+  background-color: white;
+}

@@ -1,0 +1,41 @@
+<div class="signup-header">
+  <h2>新規登録</h2>
+</div>
+    <%= form_with model: @user, url: user_registration_path , class: 'registration-main', local: true do |f| %>
+      <div class="signup-content">
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="signup-form">
+      <div class="field">
+        <%= f.label :名前 %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :電話番号%></br>
+        <%= f.text_field :phone_num, autofocus: true, autocomplete: "phone_num" %>
+      
+      <div class="field">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワード（確認用） %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+  </div>
+    <% end %>
+    <%= link_to "トップページへ戻る", root_path %>
+    </div>

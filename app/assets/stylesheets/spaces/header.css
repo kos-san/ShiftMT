@@ -1,13 +1,48 @@
+.header {
+  height: 10vh;
+  width: 100%;
+  padding-right: 4%;
+  background-color: #ffffe0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
 .logo {
   margin: auto 5%;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
 }
 .session-form {
-  margin: auto 5%;
-  width: 20%;
+  display: flex;
+  margin: auto;
+  width: 40vw;
 }
-.login-btn {
-  padding: 8% 4%;
+.logout-btn {
+  margin: auto;
   background-color: aqua;
   text-decoration: none;
   border: 1px solid red;
+}
+.mail-form {
+  margin-bottom: 20px;
+  border-bottom: 2px solid black;
+}
+
+.user-sign {
+  display: flex;
+}
+
+.form-inline {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.signup-btn {
+  font-size: 16px;
+}
+
+.form-group {
+  margin-right: 2px;
 }
