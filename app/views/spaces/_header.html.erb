@@ -1,5 +1,37 @@
-<h1 class="logo">ShiftMT</h1>
-<div class="session-form">
-  <a class="login-btn" href="#">ログイン</a>
-  <a class="login-btn" href="#">新規登録</a>
+<div class="header">
+  <%= link_to "ShiftMT", root_path, class: "logo"%>
+  <div class="user-sign">
+    <% if user_signed_in? %>
+
+      <div class="session-form">
+        <p>userID:   <%=link_to current_user.id, "#" %></p>
+        <br><%= current_user.name %>さん
+        <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "logout-btn" %>
+      </div>
+
+    <% else%>
+      
+      <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
+        
+        <div class="form-inline">
+          
+          <div class="form-group">
+            email<%= f.email_field :email, autofocus: true, autocomplete: "email", class:"mail-form" %>
+          </div>
+          
+          <div class="form-group">
+            password<%= f.password_field :password, autocomplete: "current-password", class: "password-form" %>
+          </div>
+
+          <div class="btn-form">
+            </br>
+            <%= f.submit "ログイン" , class: "login"%>
+          </div>
+        
+        </div>
+        <%= link_to "新規登録はこちらから", new_user_registration_path, class: "signup-btn"%>
+
+      <% end %>
+    <% end %>
+  </div>
 </div>
