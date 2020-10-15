@@ -1,22 +1,13 @@
-h1 {
-  font-size: 20px;
+.logo {
+  margin: auto 5%;
 }
-
-.title {
-  margin:auto;
+.session-form {
+  margin: auto 5%;
+  width: 20%;
 }
-.user-session {
-  margin: auto;
-  margin-right: 5%;
-}
-.title-store {
-  display: flex;
-  justify-content: space-between;
-  width: 30vw;
-  margin-left: 5%;
-  
-}
-.store-select {
-  margin-left: 5%;
-  margin: auto;
+.login-btn {
+  padding: 8% 4%;
+  background-color: aqua;
+  text-decoration: none;
+  border: 1px solid red;
 }
