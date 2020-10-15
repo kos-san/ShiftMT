@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class StoresControllerTest < ActionDispatch::IntegrationTest
+class SpacesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get stores_index_url
+    get spaces_index_url
     assert_response :success
   end
 
