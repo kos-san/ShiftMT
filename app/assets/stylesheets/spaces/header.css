@@ -1,0 +1,22 @@
+h1 {
+  font-size: 20px;
+}
+
+.title {
+  margin:auto;
+}
+.user-session {
+  margin: auto;
+  margin-right: 5%;
+}
+.title-store {
+  display: flex;
+  justify-content: space-between;
+  width: 30vw;
+  margin-left: 5%;
+  
+}
+.store-select {
+  margin-left: 5%;
+  margin: auto;
+}
