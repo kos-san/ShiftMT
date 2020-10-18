@@ -1,0 +1,13 @@
+<div class="new-store">
+<%= link_to "管理したい店舗を登録する", new_store_path %>
+</div>
+<div class="store-lists">
+<p>所属店舗一覧</p>
+<% @stores.each do |store| %>
+  <ul>
+      <% if store.user_id == current_user.id %>
+      <li class="store-list">  ・<%= link_to store.store_name, "#" %></li>
+      <% end %>
+  </ul>
+    <% end %>
+</div>
