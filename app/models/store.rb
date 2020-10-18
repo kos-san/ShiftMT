@@ -3,7 +3,11 @@ class Store < ApplicationRecord
 
   with_options presence: true do
     validates :store_name
-    validates :opning
+    validates :opening
     validates :closing
+    validates :tel
     validates :user
+  end
+
+  validates :tel, uniqueness: true
 end

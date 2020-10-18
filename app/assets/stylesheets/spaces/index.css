@@ -1,0 +1,14 @@
+.main-wrapper {
+  display: flex;
+}
+
+.store-list-ber {
+  width: 30%;
+  height: 100vh;
+  border-right: 1px solid lime;
+  margin-left: 10px;
+}
+
+.spaces-main-space {
+  width: 70%;
+}
