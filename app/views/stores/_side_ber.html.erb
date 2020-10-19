@@ -3,11 +3,13 @@
 </div>
 <div class="store-lists">
 <p>所属店舗一覧</p>
+<% if user_signed_in?%>
 <% @stores.each do |store| %>
   <ul>
-      <% if store.user_id == current_user.id %>
-      <li class="store-list">  ・<%= link_to store.store_name, "#" %></li>
+      <% if (store.user_id == current_user.id)%>
+      <li class="store-list">  ・<%= link_to store.store_name, store_path(store.id) %></li>
       <% end %>
   </ul>
+    <% end %>
     <% end %>
 </div>

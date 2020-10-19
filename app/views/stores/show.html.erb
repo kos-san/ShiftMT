@@ -1,0 +1,17 @@
+<%= render "shared/header"%>
+<div class="store-space">
+    <div class="store-list-ber">
+      <%= render "side_ber"%>
+    </div>
+    <div class="store-main-space">
+      <h1>店舗情報</h1>
+      <%= @store.store_name %>
+      <p>営業時間：<%= @store.opening%> 時〜<%= @store.closing%>時
+      <p>連絡先：<%= @store.tel%>
+      <div class="store-menu">
+        <p class="menu">メニュー</p>
+        <%= link_to "シフトを提出する", "#"%><br>
+        <%= link_to "シフトを確認する", "#"%>
+      </div>
+    </div>
+</div>

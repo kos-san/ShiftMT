@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     # render :new
@@ -7,6 +8,11 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
+  end
+
+  def show
+    @store = Store.find(params[:id])
+    @stores = Store.all
   end
 
   def create

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user! only: [:new_store_path]
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
