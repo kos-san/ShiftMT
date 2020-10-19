@@ -1,0 +1,10 @@
+  <% if @user == nil%>
+    ユーザーが該当しません
+    <%= link_to "検索に戻る", new_store_member_path%>
+  <% else %>
+    <%= @user.name%>
+    <%= form_with url: store_members_path, method: :post, local: true do |f|%>
+      <%=f.text_field :user_id, value: @user.id%>
+      <%= f.submit "登録" %>
+    <% end %>
+  <% end %>

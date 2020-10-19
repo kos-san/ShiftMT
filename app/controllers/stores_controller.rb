@@ -13,6 +13,7 @@ class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
     @stores = Store.all
+    @members = Member.all
   end
 
   def create

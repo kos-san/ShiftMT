@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   root to: "spaces#index"
   resources :spaces
   resources :stores do
-    resources :members
+    resources :members do
+      collection do
+        get 'search'
+      end
+    end
+
+    
   end
+  
 end

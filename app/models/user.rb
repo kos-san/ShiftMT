@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :stores
+  has_many :members
 
   with_options presence: true do
     validates :name
