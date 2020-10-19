@@ -12,6 +12,11 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+    @store.members.each do |member|
+      unless current_user.id == (member.user_id || @store.user_id)
+        redirect_to root_path
+      end
+    end
     @stores = Store.all
     @members = Member.all
   end
