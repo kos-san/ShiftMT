@@ -5,7 +5,7 @@ class CreateStores < ActiveRecord::Migration[6.0]
       t.string     :tel,              null: false
       t.integer    :opening,          null: false
       t.integer    :closing,          null: false
-      t.references :user,             null: false, foreign_key: true
+      t.references :user,                          foreign_key: true
       t.timestamps
     end
   end

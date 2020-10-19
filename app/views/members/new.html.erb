@@ -1,0 +1,8 @@
+<%= render "shared/header"%>
+<%= @store.store_name%>へスタッフを招待します
+
+<p>電話番号検索</P>
+<%= form_with url: search_store_members_path, method: :get, local: true do |f|%>
+  <%= f.text_field :phone_num%>
+  <%= f.submit :search%>
+<% end %>

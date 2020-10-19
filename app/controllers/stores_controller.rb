@@ -13,6 +13,7 @@ class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
     @stores = Store.all
+    @members = Member.all
   end
 
   def create
@@ -28,6 +29,6 @@ class StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:store_name, :tel, :opening, :closing).merge(user_id: current_user.id)
+    params.require(:store).permit(:store_name, :tel, :opening, :closing,).merge(user_id: current_user.id)
   end
 end

@@ -1,4 +1,5 @@
 class Store < ApplicationRecord
+  has_many :members
   belongs_to :user
 
   with_options presence: true do
@@ -6,7 +7,6 @@ class Store < ApplicationRecord
     validates :opening
     validates :closing
     validates :tel
-    validates :user
   end
 
   validates :tel, uniqueness: true
