@@ -1,5 +1,6 @@
 class Store < ApplicationRecord
   belongs_to :user
+  has_many :members
 
   with_options presence: true do
     validates :store_name
