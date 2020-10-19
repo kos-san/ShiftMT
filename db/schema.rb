@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_10_19_022043) do
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "store_id", null: false
+    t.bigint "user_id"
+    t.bigint "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_members_on_store_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_022043) do
     t.string "tel", null: false
     t.integer "opening", null: false
     t.integer "closing", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_stores_on_user_id"
@@ -46,5 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_022043) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "members", "stores"
+  add_foreign_key "members", "users"
   add_foreign_key "stores", "users"
 end

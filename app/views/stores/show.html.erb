@@ -10,6 +10,7 @@
       <p>連絡先：<%= @store.tel%>
       <div class="store-menu">
         <p class="menu">メニュー</p>
+        <%= link_to "スタッフを招待する", new_store_member_path(@store.id)%>
         <%= link_to "シフトを提出する", "#"%><br>
         <%= link_to "シフトを確認する", "#"%>
       </div>
