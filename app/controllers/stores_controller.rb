@@ -14,9 +14,10 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
     @stores = Store.all
     @members = Member.all
-    member = Member.where(user_id: current_user.id)
-    if member[0] != nil
-      if member[0].user_id != current_user.id
+    @member = Member.where(user_id: current_user.id)
+    @admin = Admin.where(member_id: @member[0].id)
+    if @member[0] != nil
+      if @member[0].user_id != current_user.id
         redirect_to root_path
       end
     elsif @store.user_id != current_user.id

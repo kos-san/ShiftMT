@@ -6,6 +6,7 @@
 .store-menu {
   border: 1px solid black;
   width: 220px;
+  margin-bottom: 10px;
 }
 
 .menu {

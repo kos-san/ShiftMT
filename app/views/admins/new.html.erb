@@ -1,13 +1,15 @@
 
 
 <% @admins.each do |admin|%>
-<%if admin.member.user_id == @user.id%>
- すでに管理者に任命されています
- <% else %>
-<%= @user.name%>さんを管理者に任命します。
-<%=form_with url: store_member_admins_path, method: :post, local: true do |f|%>
-  <%=f.text_field :member_id, value: @member.id, type: "hidden"%>
-  <%=f.submit "登録"%>
+  <%if admin.member.user_id == @user.id%>
+    すでに管理者に任命されています<br>
+  <% else %>
+    <%= @user.name%>さんを管理者に任命します。
+    <%=form_with url: store_member_admins_path, method: :post, local: true do |f|%>
+      <%=f.text_field :member_id, value: @member.id, type: "hidden"%>
+      <%=f.submit "登録"%>
+    <% end %>
+  <% end %>
 <% end %>
-<% end %>
-<% end %>
+
+<%=link_to "スタッフ一覧へ戻る", store_members_path%>
