@@ -1,0 +1,10 @@
+<%= render "shared/header"%>
+
+<h1><%=@store.store_name%> のスタッフ一覧</h1>
+
+<% @store.members.each do |member|%>
+  <% user = User.find(member.user_id)%>
+  <%= user.name%>
+      <%= link_to "店舗管理者に任命する", new_store_member_admin_path(@store.id,member.id)%><br>
+<% end %>
+

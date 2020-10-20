@@ -1,13 +1,15 @@
 class MembersController < ApplicationController
+  before_action :set_store, only: [:index, :new]
 
   def index
   end
+  
   def show
   end
-  def new
-    @store = Store.find(params[:store_id])
 
+  def new
   end
+
   def create
     user_id = params[:user_id]
     store_id = params[:store_id]
@@ -26,6 +28,10 @@ class MembersController < ApplicationController
   end
 
   private
+
+  def set_store
+    @store = Store.find(params[:store_id])
+  end
 
 
   

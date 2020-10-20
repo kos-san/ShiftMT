@@ -1,5 +1,6 @@
 class Store < ApplicationRecord
   has_many :members
+  has_many :admins
   belongs_to :user
 
   with_options presence: true do
