@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'shifts/index'
-  get 'shifts/new'
-  get 'shifts/show'
   devise_for :users
   root to: "spaces#index"
   resources :spaces

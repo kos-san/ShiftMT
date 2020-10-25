@@ -31,10 +31,9 @@ ActiveRecord::Schema.define(version: 2020_10_20_065739) do
   end
 
   create_table "shifts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "month_id", null: false
-    t.date "day_id", null: false
-    t.datetime "start"
-    t.datetime "ending"
+    t.date "workday", null: false
+    t.time "start"
+    t.time "ending"
     t.text "text"
     t.bigint "user_id"
     t.bigint "store_id"
