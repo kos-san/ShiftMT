@@ -3,7 +3,35 @@
     <section class="section">
       <table class="table is-striped" style="width:100%;">
         <tr>
-          <td><%=@count%>日　月曜日</td>
+          <td><%=@count%>日 <%=@ja[Date.new(@year,@month,@count).wday]%>曜日</td>
+        </tr>
+        <tr>
+          <td>
+            <%@s = Shift.where(user_id: current_user.id, store_id: @store.id, workday: "#{@year}-#{@month}-#{@count}")%>
+            <% if @s[0] == nil %>
+              <%= link_to "登録", new_store_shift_path(count: @count), class: "button is-small"%>
+            <% else %>
+              <% @shift = @s[0]%>
+              <p style="font-weight: bold;">勤務可能時間</p>
+              <%=@s[0].start.hour%>時<%=@s[0].start.min%>分〜<br>
+              <%=@s[0].ending.hour%>時<%=@s[0].ending.min%>分<br>
+              <%=link_to "変更", edit_store_shift_path(@store.id, @shift.id), class: "button is-small"%>
+              <%=link_to "取消", store_shift_path(@store.id, @shift.id), method: :delete, class: "button is-small"%>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <% @count += 1 %>
+  <% end %>
+</div>
+
+<div class="contents" style="display: flex;">
+  <% 7.times do%>
+   <section class="section">
+      <table class="table is-striped" style="width:100%;">
+        <tr>
+          <td><%=@count%>日 <%=@ja[Date.new(@year,@month,@count).wday]%>曜日</td>
         </tr>
         <tr>
           <td>
@@ -31,7 +59,7 @@
     <section class="section">
       <table class="table is-striped" style="width:100%;">
         <tr>
-          <td><%=@count%>日　月曜日</td>
+          <td><%=@count%>日 <%=@ja[Date.new(@year,@month,@count).wday]%>曜日</td>
         </tr>
         <tr>
           <td>
@@ -39,11 +67,12 @@
             <% if @s[0] == nil %>
               <%= link_to "登録", new_store_shift_path(count: @count), class: "button is-small"%>
             <% else %>
+              <% @shift = @s[0]%>
               <p style="font-weight: bold;">勤務可能時間</p>
               <%=@s[0].start.hour%>時<%=@s[0].start.min%>分〜<br>
               <%=@s[0].ending.hour%>時<%=@s[0].ending.min%>分<br>
-              <%=link_to "変更", "#", class: "button is-small"%>
-              <%=link_to "削除", "#", class: "button is-small"%>
+              <%=link_to "変更", edit_store_shift_path(@store.id, @shift.id), class: "button is-small"%>
+              <%=link_to "取消", store_shift_path(@store.id, @shift.id), method: :delete, class: "button is-small"%>
             <% end %>
           </td>
         </tr>
@@ -58,7 +87,7 @@
     <section class="section">
       <table class="table is-striped" style="width:100%;">
         <tr>
-          <td><%=@count%>日　月曜日</td>
+          <td><%=@count%>日 <%=@ja[Date.new(@year,@month,@count).wday]%>曜日</td>
         </tr>
         <tr>
           <td>
@@ -66,38 +95,12 @@
             <% if @s[0] == nil %>
               <%= link_to "登録", new_store_shift_path(count: @count), class: "button is-small"%>
             <% else %>
+              <% @shift = @s[0]%>
               <p style="font-weight: bold;">勤務可能時間</p>
               <%=@s[0].start.hour%>時<%=@s[0].start.min%>分〜<br>
               <%=@s[0].ending.hour%>時<%=@s[0].ending.min%>分<br>
-              <%=link_to "変更", "#", class: "button is-small"%>
-              <%=link_to "削除", "#", class: "button is-small"%>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-    </section>
-    <% @count += 1 %>
-  <% end %>
-</div>
-
-<div class="contents" style="display: flex;">
-  <% 7.times do%>
-    <section class="section">
-      <table class="table is-striped" style="width:100%;">
-        <tr>
-          <td><%=@count%>日　月曜日</td>
-        </tr>
-        <tr>
-          <td>
-            <%@s = Shift.where(user_id: current_user.id, store_id: @store.id, workday: "#{@year}-#{@month}-#{@count}")%>
-            <% if @s[0] == nil %>
-              <%= link_to "登録", new_store_shift_path(count: @count), class: "button is-small"%>
-            <% else %>
-              <p style="font-weight: bold;">勤務可能時間</p>
-              <%=@s[0].start.hour%>時<%=@s[0].start.min%>分〜<br>
-              <%=@s[0].ending.hour%>時<%=@s[0].ending.min%>分<br>
-              <%=link_to "変更", "#", class: "button is-small"%>
-              <%=link_to "削除", "#", class: "button is-small"%>
+              <%=link_to "変更", edit_store_shift_path(@store.id, @shift.id), class: "button is-small"%>
+              <%=link_to "取消", store_shift_path(@store.id, @shift.id), method: :delete, class: "button is-small"%>
             <% end %>
           </td>
         </tr>
@@ -113,7 +116,7 @@
 <section class="section">
       <table class="table is-striped" style="width:100%;">
         <tr>
-          <td><%=@count%>日　月曜日</td>
+          <td><%=@count%>日 <%=@ja[Date.new(@year,@month,@count).wday]%>曜日</td>
         </tr>
         <tr>
           <td>
@@ -121,11 +124,12 @@
             <% if @s[0] == nil %>
               <%= link_to "登録", new_store_shift_path(count: @count), class: "button is-small"%>
             <% else %>
+              <% @shift = @s[0]%>
               <p style="font-weight: bold;">勤務可能時間</p>
               <%=@s[0].start.hour%>時<%=@s[0].start.min%>分〜<br>
               <%=@s[0].ending.hour%>時<%=@s[0].ending.min%>分<br>
-              <%=link_to "変更", edit_store_shift_path, class: "button is-small"%>
-              <%=link_to "削除", "#", class: "button is-small"%>
+              <%=link_to "変更", edit_store_shift_path(@store.id, @shift.id), class: "button is-small"%>
+              <%=link_to "取消", store_shift_path(@store.id, @shift.id), method: :delete, class: "button is-small"%>
             <% end %>
           </td>
         </tr>

@@ -1,26 +1,32 @@
 class ShiftsController < ApplicationController
-  before_action :set_date, only: [:new, :index, :edit]
+  before_action :set_date, only: [:new, :index, :edit, :create]
   before_action :set_admin
   before_action :set_member
   before_action :set_params, only: [:create, :update]
   def index
-    @shifts = Shift.all
-    @message = "シフト提出状況"
+    if @admin
+      @shifts = Shift.all
+      @message = "シフト提出状況"
+    else
+      redirect_to new_store_shift_path(params[:store_id])
+    end
   end
 
   def new
     @shifts = @store.shifts.includes(:user)
     @message = "希望シフトを提出します"
     @shift_where = Shift.where(user_id: current_user.id, store_id: @store.id)
+    @shift = Shift.new
   end
 
   def create
+    @store = Store.find(params[:store_id])
     @shift = Shift.new(workday: @workday, start: @start, ending: @ending, text: @text, user_id: @user_id, store_id: @store_id)
     if @shift.valid?
       @shift.save
       redirect_to action: :new
     else
-      render action: :new
+      render :new
     end
   end
 
@@ -83,6 +89,7 @@ class ShiftsController < ApplicationController
     @all_days = Date.new(@year,@month,-1) #該当の月の存在する日数分の値を取り出す
     @count = 1 #ビューファイルで日付としてしようするため、定義する
     @store = Store.find(params[:store_id])
+    @ja = %w(日 月 火 水 木 金 土)
   end
 
   def set_params

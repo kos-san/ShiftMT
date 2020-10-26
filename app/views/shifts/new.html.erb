@@ -1,6 +1,21 @@
 <%= render "header"%>
 
-<%if params[:count] != nil%>
+<section class="section">
+<% if @shift.errors.any?%>
+  <p style="color:red;">エラー：登録ができていません <%="#{@shift.workday.month}月#{@shift.workday.day}日"%> </p>
+  <% @shift.errors.full_messages.each do |message|%>
+    <% if message == "Start can't be blank"%>
+      <% message = "開始時間が入力されていません"%>
+    <% elsif message == "Ending can't be blank"%>
+      <% message = "終了時間が入力されていません"%>
+    <% end %>
+    <%= message %><br>
+  <% end %>
+  <%= link_to "やり直す", new_store_shift_path(count: @shift.workday.day), class: "button"%>
+<% end %>
+</div>
+
+<%if params[:count] != nil %>
   <section class="section is-center">
     <table class="table is-striped">
       <tr>
@@ -23,6 +38,10 @@
     </table>
   </section>
 <% end %>
+
+
+
+
 
 <section class="section">
 <div style="border:3px solid blue;">
