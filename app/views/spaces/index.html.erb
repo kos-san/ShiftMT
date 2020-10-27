@@ -10,14 +10,10 @@
     <% unless user_signed_in?%>
     <h2 class="is-size-5">アカウント情報</h2>
     <p style="background-color:yellow;">表のアカウントのemailとパスワード（共通）でログインできます</p>
-    <p class="demo">表左側のログインボタンからも直接各アカウントにログインできます</p>
     <%=link_to "アプリ内の機能の説明", infomation_spaces_path, class:"button", style:"margin:10px 0 0 25vw;"%>
     <section class="section" style="display:flex;">
       <table class="table is-striped" style="font-size:14px;">
         <tr>
-          <td>
-            ログイン
-          </td>
           <td>
             アカウント名
           </td>
@@ -37,13 +33,6 @@
 
         <tr>
           <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "a@owner"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
-          <td>
             オーナーアカウント
           </td>
           <td>
@@ -61,13 +50,6 @@
         </tr>
 
         <tr>
-          <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "a@a"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
           <td>
             A店店長
           </td>
@@ -87,13 +69,6 @@
 
         <tr>
           <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "b@b"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
-          <td>
             B店店長
           </td>
           <td>
@@ -111,13 +86,6 @@
         </tr>
 
         <tr>
-          <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "c@c"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
           <td>
             スタッフ１
           </td>
@@ -139,13 +107,6 @@
 
         <tr>
           <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "d@d"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
-          <td>
             スタッフ２
           </td>
           <td>
@@ -165,13 +126,6 @@
 
 
         <tr>
-          <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "e@e"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
           <td>
             スタッフ３
           </td>
@@ -193,13 +147,6 @@
 
         <tr>
           <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "f@f"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
-          <td>
             スタッフ４
           </td>
           <td>
@@ -218,13 +165,6 @@
 
 
         <tr>
-          <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "g@g"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
           <td>
             スタッフ5
           </td>
@@ -245,13 +185,6 @@
 
         <tr>
           <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "h@h"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
-          <td>
             スタッフ６
           </td>
           <td>
@@ -270,13 +203,6 @@
 
 
         <tr>
-          <td>
-            <%= form_with model: @user, url: new_user_session_path , local: true do |f| %>
-              <% f.email_field :email, value: "i@i"%>
-              <% f.password_field :password, value: "pp0000"%>
-              <%= f.submit "ログイン", style: "font-size:10px;"%>
-            <% end %>
-          </td>
           <td>
             スタッフ７
           </td>
