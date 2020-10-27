@@ -48,3 +48,12 @@
   background-color: yellow;
   color: red;
 }
+
+.info-btn {
+  position: fixed;
+}
+
+.back-btn {
+  margin-right: 75px;
+  float:right;
+}
