@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_member, only: [:index, :show]
-  before_action :set_admin, only: [:index, :show]
+  before_action :set_admin, only: [:index, :show, :destroy]
 
   def index
     # render :new
@@ -26,6 +26,25 @@ class StoresController < ApplicationController
 
   def destroy
     store = Store.find(params[:id])
+    shifts = Shift.where(store_id: store.id)
+    if shifts != nil
+      shifts.each do |shift|
+        shift.destroy
+      end
+    end
+    members = Member.where(store_id: store.id)
+    if members != nil
+      members.each do |member|
+        @user = User.find(member.user_id)
+        if @current_store_admin
+          admins = Admin.where(member_id: member.id)
+          admins.each do |admin|
+            admin.destroy
+          end
+        end
+        member.destroy
+      end
+    end
     store.destroy
     redirect_to root_path
   end

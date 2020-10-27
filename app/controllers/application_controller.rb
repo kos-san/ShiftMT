@@ -16,12 +16,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_no_delete_user_ids
-    no_delete_user_ids =[1,11,21,31,61,71,81,111,101] 
-    no_delete_user_ids.each do |id|
-      if id == current_user.id
-        return @no_delete_user = true
-      else
-        @no_delete_user = false
+    if user_signed_in?
+      no_delete_user_ids =[1,11,21,31,61,71,81,111,101] 
+      no_delete_user_ids.each do |id|
+        if id == current_user.id
+          return @no_delete_user = true
+        else
+          @no_delete_user = false
+        end
       end
     end
   end
