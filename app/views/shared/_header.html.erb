@@ -7,6 +7,7 @@
         <p>userID:   <%=link_to current_user.id, "#" %></p>
         <br><%= current_user.name %>さん
         <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "button is-small" %>
+        <%= link_to "アカウント削除", user_registration_path, method: :delete, class: "button is-small delete-btn"%>
       </div>
 
     <% else%>

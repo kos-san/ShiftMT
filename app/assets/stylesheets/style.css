@@ -33,3 +33,8 @@
 .new-store {
   margin-bottom: 5px;
 }
+
+.delete-btn {
+  margin-left: 5px;
+  color:red;
+}
