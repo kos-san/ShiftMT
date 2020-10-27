@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_store, only: [:index, :new, :destroy]
+  before_action :set_admin, only: [:destroy]
 
   def index
     @message = "#{@store.store_name}のスタッフ一覧"
@@ -15,7 +16,12 @@ class MembersController < ApplicationController
   def destroy
     member = Member.find(params[:id])
     @user = User.find(member.user_id)
-    @delete_message = "#{@user.name}さんを外しました"
+    if @current_store_admin
+      admins = Admin.where(member_id: @member.id)
+      admins.each do |admin|
+        admin.destroy
+      end
+    end
     member.destroy
     if member.valid?
       @delete_message = "#{@user.name}さんを外しました"
@@ -43,6 +49,23 @@ class MembersController < ApplicationController
   end
 
   private
+
+    # 店舗ページの管理者であればtrueを返すようにする
+    def set_admin
+      @member = Member.find(params[:id])
+      @user = User.find(@member.user_id)
+      @store = Store.find(params[:store_id])
+      @store.admins.each do |admin|
+        if admin.member.user_id == @user.id
+          return @current_store_admin = true
+        else
+          @current_store_admin = false
+        end
+      end
+      if @store.user_id == @user.id
+        @current_store_admin = true
+      end
+    end
 
   def set_store
     @store = Store.find(params[:store_id])
