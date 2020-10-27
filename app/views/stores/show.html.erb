@@ -20,7 +20,7 @@
           <h1 class="menu">管理者画面</h1>
           <%=link_to "スタッフ一覧", store_members_path(@store.id)%><br>
           <%= link_to "シフト表を作成する", "#"%><br>
-          <% if @store.id != 1 || @store.id != 11%>
+          <% if @store.id != 1 && 11%>
             <%= link_to "店舗を削除する", store_path(@store.id), method: :delete%>
           <% end %>
         </div>
