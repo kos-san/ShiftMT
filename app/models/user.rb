@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :stores
   has_many :members
+  has_many :shifts
 
   with_options presence: true do
     validates :name

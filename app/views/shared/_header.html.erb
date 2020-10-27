@@ -6,7 +6,7 @@
       <div class="session-form">
         <p>userID:   <%=link_to current_user.id, "#" %></p>
         <br><%= current_user.name %>さん
-        <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "logout-btn" %>
+        <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "button is-small" %>
       </div>
 
     <% else%>
@@ -25,7 +25,7 @@
 
           <div class="btn-form">
             </br>
-            <%= f.submit "ログイン" , class: "login"%>
+            <%= f.submit "ログイン" , class: "button"%>
           </div>
         
         </div>

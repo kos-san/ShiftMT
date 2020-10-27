@@ -1,0 +1,33 @@
+<%= render "header"%>
+
+  <section class="section is-center">
+    <table class="table is-striped">
+      <tr>
+        <td>
+          <h2 style="font-size:20px;"><%="#{@shift.workday.year}年#{@shift.workday.month}月#{@shift.workday.day}日のシフトを"%><span style="color:red">変更</span>します<br>
+          登録中の時間<br>
+          <%="#{@shift.start.hour}時#{@shift.start.min}分 ~ #{@shift.ending.hour}時#{@shift.ending.min}分"%>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <% count = params[:count]%>
+          <%= form_with url: store_shift_path,method: :patch, local: true do |f|%>
+            <%= f.text_field :workday, value:"#{@shift.workday}", type: "hidden"%>
+            希望時間<br>
+            <%= f.time_field :start%>から<br>
+            <%= f.time_field :ending %>まで<br>
+            備考欄（任意）<br>
+            <%= f.text_area :text, class:"text-form"%>
+            <%= f.submit "登録", class: "button", style:"float:right;"%>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+<section class="section">
+<div style="border:3px solid blue;">
+<%= render "index"%>
+</div>
+</section>

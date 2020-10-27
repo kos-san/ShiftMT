@@ -1,0 +1,32 @@
+<%= render "header"%>
+
+<section class="section contents">
+<%@members.each do |member|%>
+<% @submit_user = false%>
+<table class="table is-striped" style="margin-right:5px;">
+<% select_user = User.find(member.user_id)%>
+<tr>
+  <td><%=select_user.name%></td>
+</tr>
+<tr>
+  <%submits = Shift.where('workday LIKE(?)',"#{@year}-#{@month}%")%>
+    <% submits.each do |submit|%>
+      <% user_id = submit.user.id %>
+        <%if user_id == select_user.id && submit.store_id == @store.id%>
+          <% @submit_user = true%>
+        <% else %>
+          <% unless @submit_user %>
+            <% @submit_user = false%>
+          <% end %>
+        <% end %>
+    <% end %>
+    <%if @submit_user%>
+      <td style="color:red;">登録済み</td>
+    <% else %>
+      <td>未登録</td>
+    <% end %>
+</tr>
+
+</table>
+<%end%>
+</section>

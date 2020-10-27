@@ -1,21 +1,21 @@
 <div class="new-store">
-<%= link_to "管理したい店舗を登録する", new_store_path %>
+  <%= link_to "管理したい店舗を登録する", new_store_path ,class: "button color-blue"%>
 </div>
 <div class="store-lists">
-<p>所属店舗一覧</p>
+<p style="text-align:center;">所属店舗一覧</p>
 <% if user_signed_in?%>
 <% @members.each do |member|%>
   <ul>
     <% if current_user.id == member.user_id %>
     <% store = Store.find(member.store_id)%>
-    <li class="store-kist"><%= link_to store.store_name, store_path(store.id)%></li>
+    <li class="store-list button is-large"><%= link_to store.store_name, store_path(store.id), style:"color:black;"%></li>
     <% end %>
   </ul>
 <% end %>
 <% @stores.each do |store| %>
   <ul>
       <% if (store.user_id == current_user.id)%>
-      <li class="store-list">  ・<%= link_to store.store_name, store_path(store.id) %></li>
+      <li class="store-list button is-large"> <%= link_to store.store_name, store_path(store.id), style: "color:black;"%></li>
       <% end %>
   </ul>
     <% end %>

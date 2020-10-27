@@ -1,0 +1,50 @@
+<%= render "header"%>
+
+<section class="section">
+<% if @shift.errors.any?%>
+  <p style="color:red;">エラー：登録ができていません <%="#{@shift.workday.month}月#{@shift.workday.day}日"%> </p>
+  <% @shift.errors.full_messages.each do |message|%>
+    <% if message == "Start can't be blank"%>
+      <% message = "開始時間が入力されていません"%>
+    <% elsif message == "Ending can't be blank"%>
+      <% message = "終了時間が入力されていません"%>
+    <% end %>
+    <%= message %><br>
+  <% end %>
+  <%= link_to "やり直す", new_store_shift_path(count: @shift.workday.day), class: "button"%>
+<% end %>
+</div>
+
+<%if params[:count] != nil %>
+  <section class="section is-center">
+    <table class="table is-striped">
+      <tr>
+        <td><h2 style="font-size:20px;"><%="#{@year}年#{@month}月#{params[:count]}日のシフトを"%><span style="color:red">出勤</span>で登録します
+      </tr>
+      <tr>
+        <td>
+          <% count = params[:count]%>
+          <%= form_with url: store_shifts_path, local: true do |f|%>
+            <%= f.text_field :workday, value:"#{@year}-#{@month}-#{count}", type: "hidden"%>
+            希望時間<br>
+            <%= f.time_field :start%>から<br>
+            <%= f.time_field :ending %>まで<br>
+            備考欄（任意）<br>
+            <%= f.text_area :text, class:"text-form"%>
+            <%= f.submit "登録", class: "button", style:"float:right;"%><%=link_to "リセット", new_store_shift_path(count: count), class: "button is-small", style: "float:left"%>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </section>
+<% end %>
+
+
+
+
+
+<section class="section">
+<div style="border:3px solid blue;">
+<%= render "index"%>
+</div>
+</section>

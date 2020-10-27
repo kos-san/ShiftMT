@@ -1,0 +1,13 @@
+<section class="hero is-info" style="background-color: steelblue;">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= @message %>
+      </h1>
+      <h2 class="subtitle">
+        <%=@month%>月のシフト表
+      </h2>
+      <%=link_to "トップへ戻る", store_path(@store.id), style: "float: right;", class: "button"%>
+    </div>
+  </div>
+</section>
