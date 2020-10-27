@@ -1,10 +1,31 @@
-<%= render "shared/header"%>
+<%= render "header"%>
 
-<h1><%=@store.store_name%> のスタッフ一覧</h1>
-
-<% @store.members.each do |member|%>
-  <% user = User.find(member.user_id)%>
-  <%= user.name%>
-      <%= link_to "店舗管理者に任命する", new_store_member_admin_path(@store.id,member.id)%><br>
+<% if @delete_message != nil %>
+<div class="message-box">
+  <%=@delete_message%><br><%= link_to "OK", store_members_path(@store.id), class: "button"%>
+</div>
 <% end %>
 
+<section class="section" style="display:flex;">
+  <% @store.members.each do |member|%>
+    <table class="table is-sprited" style="border-right:1px solid black;">
+      <tr>
+        <% user = User.find(member.user_id)%>
+          <td><%= user.name%>
+          </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="box">
+            <p class="is-size-7" style="border-bottom:1px solid black;">管理者</p>
+            <%= link_to "任命", new_store_member_admin_path(@store.id,member.id), class: "button is-small", style: "margin-top:5px;"%><br>
+          </div>
+          <div class="box">
+            <p class="is-size-7" style="border-bottom:1px solid black;">変更</p>
+            <%= link_to "削除", store_member_path(@store.id, member.id), method: :delete, class: "button is-small", style: "margin-top:5px;"%>
+          </div>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</section>

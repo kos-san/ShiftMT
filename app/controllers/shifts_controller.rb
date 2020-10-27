@@ -4,12 +4,9 @@ class ShiftsController < ApplicationController
   before_action :set_member
   before_action :set_params, only: [:create, :update]
   def index
-    if @admin
-      @shifts = Shift.all
+      @shifts = Shift.where(store_id: params[:store_id])
       @message = "シフト提出状況"
-    else
-      redirect_to new_store_shift_path(params[:store_id])
-    end
+      @members = Member.where(store_id: @store.id)
   end
 
   def new

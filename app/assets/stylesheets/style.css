@@ -2,3 +2,34 @@
   height: 80px;
   width: 100%;
 }
+
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message-box {
+  border: 1px solid red;
+  margin:20px 0 0 40px;
+  width: 200px;
+  text-align: center;
+}
+
+.store-list {
+  width: 90%;
+  background-color: #f0fff0;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.side-ber {
+  border-right: 1px solid black;
+  height: 100vh;
+}
+.color-blue {
+  color: blue;
+}
+
+.new-store {
+  margin-bottom: 5px;
+}

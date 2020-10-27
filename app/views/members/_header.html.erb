@@ -1,0 +1,10 @@
+<section class="hero is-info" style="background-color: steelblue;">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= @message %>
+      </h1>
+      <%=link_to "#{@store.store_name}メニューへ戻る", store_path(@store.id), style: "float: right;", class: "button"%>
+    </div>
+  </div>
+</section>

@@ -1,9 +1,9 @@
 <%= render "shared/header"%>
 <div class="store-space">
-    <div class="store-list-ber">
+    <div class="side-ber">
       <%= render "side_ber"%>
     </div>
-    <div class="store-main-space">
+    <section class="section">
       <h1>店舗情報</h1>
       <%= @store.store_name %>
       <p>営業時間：<%= @store.opening%> 時〜<%= @store.closing%>時
@@ -12,7 +12,7 @@
         <p class="menu">メニュー</p>
         <%= link_to "スタッフを招待する", new_store_member_path(@store.id)%><br>
         <%= link_to "シフトを提出する", new_store_shift_path(@store.id)%><br>
-        <%= link_to "シフトを確認する", "#"%><br>
+        <%= link_to "シフトを確認する", store_shifts_path(@store.id)%><br>
       </div>
 
       <% if @current_store_admin == true %>
@@ -22,5 +22,5 @@
           <%= link_to "シフト表を作成する", "#"%>
         </div>
       <% end %>
-    </div>
+    </section>
 </div>
