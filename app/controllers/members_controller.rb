@@ -71,6 +71,7 @@ class MembersController < ApplicationController
     @store = Store.find(params[:store_id])
   end
 
+  
 
   
 

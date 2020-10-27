@@ -2,12 +2,13 @@
   <%= link_to "ShiftMT", root_path, class: "logo"%>
   <div class="user-sign">
     <% if user_signed_in? %>
-
       <div class="session-form">
         <p>userID:   <%=link_to current_user.id, "#" %></p>
         <br><%= current_user.name %>さん
         <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "button is-small" %>
-        <%= link_to "アカウント削除", user_registration_path, method: :delete, class: "button is-small delete-btn"%>
+        <% unless @no_delete_user%>
+          <%= link_to "アカウント削除", user_registration_path, method: :delete, class: "button is-small delete-btn"%>
+        <% end %>
       </div>
 
     <% else%>
