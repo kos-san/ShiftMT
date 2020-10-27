@@ -6,4 +6,7 @@ class SpacesController < ApplicationController
     @members = Member.all
   end
 
+  def infomation
+  end
+
 end

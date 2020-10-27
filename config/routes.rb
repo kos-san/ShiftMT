@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "spaces#index"
-  resources :spaces
+  resources :spaces do
+    collection do
+      get 'infomation'
+    end
+  end
   resources :stores do
     resources :shifts
     resources :members do

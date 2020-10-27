@@ -6,9 +6,224 @@
   <div class="store-list-ber">
     <%= render "stores/side_ber"%>
   </div>
-  <div class="spaces-main-space">
-    
+  <div class="spaces-main-space section">
+    <% unless user_signed_in?%>
+    <h2 class="is-size-5">アカウント情報</h2>
+    <p style="background-color:yellow;">表のアカウントのemailとパスワード（共通）でログインできます</p>
+    <%=link_to "アプリ内の機能の説明", infomation_spaces_path, class:"button", style:"margin:10px 0 0 25vw;"%>
+    <section class="section" style="display:flex;">
+      <table class="table is-striped" style="font-size:14px;">
+        <tr>
+          <td>
+            アカウント名
+          </td>
+          <td>
+            email
+          </td>
+          <td>
+            電話番号
+          </td>
+          <td>
+            A店
+          </td>
+          <td>
+            B店
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            オーナーアカウント
+          </td>
+          <td>
+            a@owner
+          </td>
+          <td>
+            12345
+          </td>
+          <td>
+            管理者
+          </td>
+          <td>
+            管理者
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            B店店長
+          </td>
+          <td>
+            b@b
+          </td>
+          <td>
+            222
+          </td>
+          <td>
+            ーーー
+          </td>
+          <td>
+            管理者
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            スタッフ１
+          </td>
+          <td>
+            c@c
+          </td>
+          <td>
+            333
+          </td>
+          <td>
+            管理者
+          </td>
+          <td>
+            ーーー
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td>
+            スタッフ２
+          </td>
+          <td>
+            d@d
+          </td>
+          <td>
+            444
+          </td>
+          <td>
+            一般
+          </td>
+          <td>
+            ーーー
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td>
+            スタッフ３
+          </td>
+          <td>
+            e@e
+          </td>
+          <td>
+            555
+          </td>
+          <td>
+            ーーー
+          </td>
+          <td>
+            管理者
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td>
+            スタッフ４
+          </td>
+          <td>
+            f@f
+          </td>
+          <td>
+            666
+          </td>
+          <td>
+            ーーー
+          </td>
+          <td>
+            一般
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            スタッフ5
+          </td>
+          <td>
+            g@g
+          </td>
+          <td>
+            777
+          </td>
+          <td>
+            管理者
+          </td>
+          <td>
+            一般
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            スタッフ６
+          </td>
+          <td>
+            h@h
+          </td>
+          <td>
+            888
+          </td>
+          <td>
+            一般
+          </td>
+          <td>
+            管理者
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            スタッフ７
+          </td>
+          <td>
+            i@i
+          </td>
+          <td>
+            999
+          </td>
+          <td>
+            一般
+          </td>
+          <td>
+            一般
+          </td>
+        </tr>
+
+
+
+
+
+
+      </table>
+
+      <table class="table is-sprited" style="font-size:14px;">
+        <tr>
+          <td>
+            パスワード(共通)
+          <td>
+        </tr>
+        <tr>
+          <td style="color:red;">
+            <p class="is-size-5"style="text-align:center;">pp0000</p>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+
+    <% end %>
   </div>
 </div>
-
-Space#index

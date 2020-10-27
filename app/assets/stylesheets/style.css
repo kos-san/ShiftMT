@@ -38,3 +38,13 @@
   margin-left: 5px;
   color:red;
 }
+
+
+.info-title {
+  text-align: center;
+}
+
+.demo {
+  background-color: yellow;
+  color: red;
+}
