@@ -1,6 +1,7 @@
 class Shift < ApplicationRecord
   belongs_to :user
   belongs_to :store
+  has_one    :table
 
   with_options presence: true do
     validates :workday
