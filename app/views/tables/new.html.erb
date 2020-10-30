@@ -1,0 +1,137 @@
+<section class="section hero is-info">
+  <h2 class="title"><%=@store.store_name%>のシフト表を作成します。</h2>
+  <h2 class="subtitle"><%=@today.next_month.month%>月</h2>
+  <div><%=link_to "戻る", store_tables_path, class: "button", style: "float:right;"%></div>
+</section>
+
+<%if params[:shift_id] != nil %>
+  <section class="section is-center">
+    <table class="table is-striped">
+      <tr>
+        <td><h2 style="font-size:20px;"><%="#{@next.year}年#{@next.month}月#{params[:day]}日"%></td>
+      </tr>
+      <tr>
+        <td>
+          <% day = params[:day]%>
+          <%= form_with url: store_shifts_path, local: true do |f|%>
+            <%= f.text_field :workday, value:"#{@shift.workday}"%>
+            <%= f.text_field :user_id, value:"#{@shift.user.id}"%>
+            希望時間<br>
+            <%= f.time_field :start%>から<br>
+            <%= f.time_field :ending %>まで<br>
+            備考欄（任意）<br>
+            <%= f.text_area :text, class:"text-form"%>
+            <%= f.submit "登録", class: "button", style:"float:right;"%>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </section>
+<% end %>
+
+
+
+<section class="section overflow">
+  <table class="table is-bordered is-striped">
+  <tr>
+    <td class="name-table">
+      
+    </td>
+    <%@day.day.times do %>
+      <% @day += 1%>
+      <td>
+        <%= @day.day %>
+      </td>
+    <% end %>
+  </tr>
+  
+    <% @members.each do |member|%>
+      <%@day_count = 0%>
+      <%user = User.find(member.user_id)%>
+      <tr>
+        <td class="name-table">
+          <p><%= user.name%></p>
+        </td>
+        <% @day.day.times do%>
+          <%@day_count += 1%>
+          <td class="name-table">
+           <%@shifts.each do |shift|%>
+            <% if shift.user_id == user.id%>
+              <% if shift.workday.day == @day_count%>
+                <div class="tags">
+                  <div class="is-size-7">
+                    <%=link_to "#{shift.start.strftime("%H:%M")}", new_store_table_path(@store.id, shift_id: shift.id, day: @day_count)%>
+                    <div class="border"></div>
+                    <%=link_to "#{shift.ending.strftime("%H:%M")}", "#"%>
+                  </div>
+                  <div class="is-size-7">
+                    <%if shift.text != "" && shift.text != nil%>
+                      <%=link_to "!確認!", "#", style: "color:red;"%>
+                    <% end %>
+                    
+                    <p>マウス</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+
+            
+           
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  
+  </table>
+
+ 
+
+</section>
+
+<section class="section">
+   <%= form_with(model: [@store, @table], local: true) do |f| %>
+    <%= f.label :shift_id, "シフトID" %>
+    <%= f.text_field :shift_id %>
+    <br>
+
+    <%= f.label :worlday, "日付"%>
+    <%= f.text_field :workday, value: "#{@next.year}-#{@next.month}-1"%>
+    <br>
+
+    <%= f.label :start, "開始時刻"%>
+    <%= f.time_field :start %>
+    <br>
+
+    <%= f.label :ending, "終了時刻"%>
+    <%= f.time_field :ending%>
+    <br>
+
+    <%= f.label :total, "特になし"%>
+    <%= f.text_field :total%>
+    <br>
+
+    <%= f.label :shift_id, "シフトID" %>
+    <%= f.text_field :shift_id %>
+    <br>
+
+    <%= f.label :worlday, "日付"%>
+    <%= f.text_field :workday, value: "#{@next.year}-#{@next.month}-1"%>
+    <br>
+
+    <%= f.label :start, "開始時刻"%>
+    <%= f.time_field :start %>
+    <br>
+
+    <%= f.label :ending, "終了時刻"%>
+    <%= f.time_field :ending%>
+    <br>
+
+    <%= f.label :total, "特になし"%>
+    <%= f.text_field :total%>
+    <br>
+
+    <%= f.submit "送信"%>
+
+  <% end %>
+</section>

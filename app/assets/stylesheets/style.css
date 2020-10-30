@@ -57,3 +57,17 @@
   margin-right: 75px;
   float:right;
 }
+
+.overflow {
+  overflow: scroll;
+
+}
+
+.name-table {
+  white-space: nowrap;
+}
+
+.border {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
