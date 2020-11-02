@@ -58,13 +58,12 @@ ActiveRecord::Schema.define(version: 2020_10_28_070212) do
     t.date "workday", null: false
     t.time "start", null: false
     t.time "ending", null: false
-    t.integer "total", null: false
+    t.bigint "user_id"
     t.bigint "store_id"
-    t.bigint "shift_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["shift_id"], name: "index_tables_on_shift_id"
     t.index ["store_id"], name: "index_tables_on_store_id"
+    t.index ["user_id"], name: "index_tables_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -88,6 +87,6 @@ ActiveRecord::Schema.define(version: 2020_10_28_070212) do
   add_foreign_key "shifts", "stores"
   add_foreign_key "shifts", "users"
   add_foreign_key "stores", "users"
-  add_foreign_key "tables", "shifts"
   add_foreign_key "tables", "stores"
+  add_foreign_key "tables", "users"
 end

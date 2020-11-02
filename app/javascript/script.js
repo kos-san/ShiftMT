@@ -1,5 +1,20 @@
 $(document).ready(function() {
-  $('#text').click(function(){
-    $("#text").text("jQuery稼働テスト(稼働中)");
-  })
+  $('.text-confirmation').click(function() {
+    $(this).find('.mouse').text("変更");
+  });
+  
+  $('.close').click(function() {
+    $('.test').css('display','none');
+  });
+
+  $('.infomation').click(function() {
+    $(this).find('.cation').fadeOut();
+    $(this).find('#infomation').fadeIn();
+  });
+
+  // $('.infomation').click(function() {
+  //   // $(this).find('.cation').fadeIn();
+  //   $(this).find('#infomation').fadeOut();
+  // });
+
 });

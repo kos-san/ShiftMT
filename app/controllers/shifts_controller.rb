@@ -1,12 +1,20 @@
 class ShiftsController < ApplicationController
   before_action :set_date, only: [:new, :index, :edit, :create]
+  before_action :set_month, only: [:index]
   before_action :set_admin
   before_action :set_member
   before_action :set_params, only: [:create, :update]
   def index
       @shifts = Shift.where(store_id: params[:store_id])
       @message = "シフト提出状況"
-      @members = Member.where(store_id: @store.id)
+      # @members = Member.where(store_id: @store.id)
+
+      @members = @store.members.includes(:store)
+      shifts = Shift.where(store_id: params[:store_id])
+      @shifts = shifts.where('workday like ?',"#{@next.year}-#{@next.month}%")
+      tables = Table.where(store_id: (params[:store_id]))
+      @tables = tables.where('workday like ?',"#{@next.year}-#{@next.month}%")  
+      
   end
 
   def new
@@ -47,6 +55,7 @@ class ShiftsController < ApplicationController
   end
 
   def show
+    
   end
 
   private
@@ -87,6 +96,14 @@ class ShiftsController < ApplicationController
     @count = 1 #ビューファイルで日付としてしようするため、定義する
     @store = Store.find(params[:store_id])
     @ja = %w(日 月 火 水 木 金 土)
+  end
+
+  def set_month
+    @today = Date.today
+    @next = @today.next_month
+    @day = Date.new(@next.year,@next.month,-1)
+    @day_count = 0
+    # @test = Date.new(@next.year,@next.month,@day_count)
   end
 
   def set_params
