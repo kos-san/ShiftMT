@@ -57,3 +57,47 @@
   margin-right: 75px;
   float:right;
 }
+
+.overflow {
+  overflow: scroll;
+
+}
+
+.name-table {
+  white-space: nowrap;
+}
+
+.border {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.test {
+  /* position: fixed; */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+
+
+
+.test-active {
+  display: block;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
+.cation {
+  color: red;
+  cursor: pointer;
+}
+
+#infomation {
+  display: none;
+}

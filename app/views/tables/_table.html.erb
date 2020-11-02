@@ -1,0 +1,51 @@
+<section class="section overflow">
+  <table class="table is-bordered is-striped">
+  <tr>
+    <td class="name-table">
+      
+    </td>
+    <% @day_count = 0%>
+    <%@day.day.times do %>
+      <% @day_count += 1%>
+      <td>
+        <%= @day_count %>
+      </td>
+    <% end %>
+  </tr>
+  
+    <% @members.each do |member|%>
+      <%@day_count = 0%>
+      <%user = User.find(member.user_id)%>
+      <tr>
+        <td class="name-table">
+          <p><%= user.name%></p>
+        </td>
+        <% @day.day.times do%>
+          <%@day_count += 1%>
+          <td class="name-table" >
+          <%if @tables != nil%>
+            <%@tables.each do |table|%>
+              <% if table.user_id == user.id%>
+                <% if table.workday.day == @day_count%>
+                  <div class="tags">
+                    <div class="is-size-7" >
+                      <%= "#{table.start.strftime("%H:%M")}"%>
+                      <div class="border"></div>
+                      <%="#{table.ending.strftime("%H:%M")}"%>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+            
+           
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  
+  </table>
+
+</section>

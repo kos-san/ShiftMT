@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_065739) do
+ActiveRecord::Schema.define(version: 2020_10_28_070212) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "member_id"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 2020_10_20_065739) do
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
+  create_table "tables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "workday", null: false
+    t.time "start", null: false
+    t.time "ending", null: false
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_tables_on_store_id"
+    t.index ["user_id"], name: "index_tables_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,4 +87,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_065739) do
   add_foreign_key "shifts", "stores"
   add_foreign_key "shifts", "users"
   add_foreign_key "stores", "users"
+  add_foreign_key "tables", "stores"
+  add_foreign_key "tables", "users"
 end
