@@ -101,3 +101,37 @@
 #infomation {
   display: none;
 }
+
+
+
+.contacts {
+  width: 50vw;
+  height: 20vh;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.contact-content {
+  
+}
+
+.contact-form {
+  display:none;
+}
+
+.title-form {
+  width: 35vw;
+}
+.text-form {
+  width: 40vw;
+  height: 20vh;
+}
+
+#form-close {
+  float:right;
+  cursor: pointer;
+}

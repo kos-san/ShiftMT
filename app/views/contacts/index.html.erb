@@ -1,0 +1,62 @@
+<section class="section">
+  <h2 class="is-size-3"><%=@store.store_name%>業務連絡</h2>
+  <button class="post button">投稿</button><%=link_to "戻る", store_path(@store), class:"button", style:"margin-left:10px;"%>
+</section>
+
+
+<div class="contact-form">
+  <section class="section">
+    <%= form_with model: [@store, @contact], local: true do |f|%>
+      <table class="table is-striped">
+        <tr>
+          <td>
+            <%= f.text_field :title, placeholder: "タイトル", class: "title-form" %><span class="is-size-5" id="form-close">✗</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.text_area :text, placeholder: "本文", class:"text-form"%><br>
+            <%= f.submit "送信", class: "button", style: "float:right;"%>
+          </td>
+        </tr>
+
+      </table>
+    <% end %>
+  </section>
+</div>
+
+
+
+<% @contacts.each do |contact|%>
+<section class="section">
+  <table class="table is-striped contacts">
+    <tr>
+      <td><h2 class="contact-title"><%=contact.title%></h2>
+      <p class="is-size-7" style="float:right;">投稿者：<%=contact.user.name%></p>
+      </td>
+
+    </tr>
+    <tr class="contact-content">
+      <td>
+        <p class="is-size-7" style="float:left;"><%= contact.created_at.month%>月<%= contact.created_at.day%>日</p><br>
+        <%=contact.text%><br>
+        <%if contact.user_id == current_user.id%>
+          <div style="float:right;">
+            <%=link_to "削除",store_contact_path(@store.id, contact.id), method: :delete, class:"button is-small"%>
+          </div>
+        <% end %>
+      </td>
+
+
+    </tr>
+
+  </table>
+</section>
+<% end %>
+
+<%if @contacts[0] == nil%>
+  <section class="section">
+    <p class="is-size-4">投稿はありません。</p>
+
+  </section>
+<% end %>

@@ -12,9 +12,12 @@ $(document).ready(function() {
     $(this).find('#infomation').fadeIn();
   });
 
-  // $('.infomation').click(function() {
-  //   // $(this).find('.cation').fadeIn();
-  //   $(this).find('#infomation').fadeOut();
-  // });
+  $('.post').click(function() {
+    $('.contact-form').fadeIn();
+  });
+
+  $('#form-close').click(function() {
+    $('.contact-form').fadeOut();
+  });
 
 });
