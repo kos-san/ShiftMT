@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_070212) do
+ActiveRecord::Schema.define(version: 2020_11_02_093331) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "member_id"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2020_10_28_070212) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_admins_on_member_id"
     t.index ["store_id"], name: "index_admins_on_store_id"
+  end
+
+  create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "text", null: false
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_contacts_on_store_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +93,8 @@ ActiveRecord::Schema.define(version: 2020_10_28_070212) do
 
   add_foreign_key "admins", "members"
   add_foreign_key "admins", "stores"
+  add_foreign_key "contacts", "stores"
+  add_foreign_key "contacts", "users"
   add_foreign_key "members", "stores"
   add_foreign_key "members", "users"
   add_foreign_key "shifts", "stores"

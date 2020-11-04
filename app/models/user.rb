@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :members
   has_many :shifts
   has_many :tables
+  has_many :contacts
 
   with_options presence: true do
     validates :name

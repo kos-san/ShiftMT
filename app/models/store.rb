@@ -4,6 +4,7 @@ class Store < ApplicationRecord
   belongs_to :user
   has_many :shifts
   has_many :tables
+  has_many :contacts
 
   with_options presence: true do
     validates :store_name

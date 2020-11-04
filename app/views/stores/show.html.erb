@@ -13,6 +13,7 @@
         <%= link_to "スタッフを招待する", new_store_member_path(@store.id)%><br>
         <%= link_to "シフトを提出する", new_store_shift_path(@store.id)%><br>
         <%= link_to "シフトを確認する", store_shifts_path(@store.id)%><br>
+        <%= link_to "業務連絡", store_contacts_path(@store)%><br>
       </div>
 
       <% if @current_store_admin %>

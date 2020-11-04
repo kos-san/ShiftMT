@@ -14,6 +14,8 @@
 - has_many :stores
 - has_many :members
 - has_many :shifts
+- has_many :tables
+- has_many :contacts
 
 ## stores テーブル
 
@@ -31,6 +33,7 @@
 - has_many   :members
 - has_many   :shifts
 - has_many   :tables
+- has_many   :contacts
 
 ## members テーブル
 
@@ -72,7 +75,6 @@
 
 - belongs_to :user
 - belongs_to :store
-- has_one    :table
 
 ## tables テーブル
 
@@ -81,11 +83,24 @@
 | workday | date      | null: false                    |
 | start   | time      | null: false                    |
 | ending  | time      | null: false                    |
-| total   | integer   | null: false                    |
 | store   | reference | null: false, foreign_key: true |
-| shift   | reference | null: false, foreign_key: true |
+| user    | reference | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :store
-- belongs_to :shift
+- belongs_to :user
+
+## contacts テーブル
+
+| Column | Type      | Options                        |
+| ------ | --------- | ------------------------------ |
+| title  | string    | null: false                    |
+| text   | text      | null: false                    |
+| user   | reference | null: false, foreign_key: true |
+| store  | reference | null: false, foreign_key: true |
+
+### Associations
+
+- belongs_to :user
+- belongs_to :store
