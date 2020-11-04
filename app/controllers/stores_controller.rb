@@ -5,7 +5,6 @@ class StoresController < ApplicationController
 
   def index
     # render :new
-
   end
 
   def new
@@ -16,24 +15,20 @@ class StoresController < ApplicationController
     @stores = Store.all
     @members = Member.all
     @member = Member.where(user_id: current_user.id)
-    if current_user.id != @store.user_id
-      @admin = Admin.where(member_id: @member[0].id)
-    end
-    unless @current_store_member 
-      redirect_to root_path
-    end
+    @admin = Admin.where(member_id: @member[0].id) if current_user.id != @store.user_id
+    redirect_to root_path unless @current_store_member
   end
 
   def destroy
     store = Store.find(params[:id])
     shifts = Shift.where(store_id: store.id)
-    if shifts != nil
+    unless shifts.nil?
       shifts.each do |shift|
         shift.destroy
       end
     end
     members = Member.where(store_id: store.id)
-    if members != nil
+    unless members.nil?
       members.each do |member|
         @user = User.find(member.user_id)
         if @current_store_admin
@@ -71,9 +66,7 @@ class StoresController < ApplicationController
         @current_store_member = false
       end
     end
-    if @store.user_id == current_user.id
-      @current_store_member = true
-    end
+    @current_store_member = true if @store.user_id == current_user.id
   end
 
   # 店舗ページの管理者であればtrueを返すようにする
@@ -86,12 +79,10 @@ class StoresController < ApplicationController
         @current_store_admin = false
       end
     end
-    if @store.user_id == current_user.id
-      @current_store_admin = true
-    end
+    @current_store_admin = true if @store.user_id == current_user.id
   end
 
   def store_params
-    params.require(:store).permit(:store_name, :tel, :opening, :closing,).merge(user_id: current_user.id)
+    params.require(:store).permit(:store_name, :tel, :opening, :closing).merge(user_id: current_user.id)
   end
 end

@@ -1,8 +1,7 @@
 class ContactsController < ApplicationController
-
   def index
     @store = Store.find(params[:store_id])
-    @contacts = Contact.where(store_id: @store.id).order("created_at DESC")
+    @contacts = Contact.where(store_id: @store.id).order('created_at DESC')
     @contact = Contact.new
   end
 
@@ -16,9 +15,7 @@ class ContactsController < ApplicationController
 
   def destroy
     contact = Contact.find(params[:id])
-    if contact.user_id == current_user.id
-      contact.destroy
-    end
+    contact.destroy if contact.user_id == current_user.id
     redirect_to action: :index
   end
 

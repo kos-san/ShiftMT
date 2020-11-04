@@ -6,7 +6,7 @@ class MembersController < ApplicationController
     @message = "#{@store.store_name}のスタッフ一覧"
     @delete_message = params[:delete_message]
   end
-  
+
   def show
   end
 
@@ -25,10 +25,9 @@ class MembersController < ApplicationController
     member.destroy
     if member.valid?
       @delete_message = "#{@user.name}さんを外しました"
-      return redirect_to store_members_path(@store.id,delete_message: @delete_message)
+      return redirect_to store_members_path(@store.id, delete_message: @delete_message)
     end
     redirect_to store_members_path
-    
   end
 
   def create
@@ -42,37 +41,28 @@ class MembersController < ApplicationController
   end
 
   def search
-    if params[:phone_num].present?
-      @user = User.where(phone_num: "#{params[:phone_num]}")[0]
-    end
+    @user = User.where(phone_num: params[:phone_num].to_s)[0] if params[:phone_num].present?
     @member = Member.new
   end
 
   private
 
-    # 店舗ページの管理者であればtrueを返すようにする
-    def set_admin
-      @member = Member.find(params[:id])
-      @user = User.find(@member.user_id)
-      @store = Store.find(params[:store_id])
-      @store.admins.each do |admin|
-        if admin.member.user_id == @user.id
-          return @current_store_admin = true
-        else
-          @current_store_admin = false
-        end
-      end
-      if @store.user_id == @user.id
-        @current_store_admin = true
+  # 店舗ページの管理者であればtrueを返すようにする
+  def set_admin
+    @member = Member.find(params[:id])
+    @user = User.find(@member.user_id)
+    @store = Store.find(params[:store_id])
+    @store.admins.each do |admin|
+      if admin.member.user_id == @user.id
+        return @current_store_admin = true
+      else
+        @current_store_admin = false
       end
     end
+    @current_store_admin = true if @store.user_id == @user.id
+  end
 
   def set_store
     @store = Store.find(params[:store_id])
   end
-
-  
-
-  
-
 end

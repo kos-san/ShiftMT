@@ -6,7 +6,6 @@ class AdminsController < ApplicationController
   end
 
   def new
-    
     @admins = Admin.all
   end
 
@@ -34,9 +33,7 @@ class AdminsController < ApplicationController
         @current_store_member = false
       end
     end
-    if @store.user_id == current_user.id
-      @current_store_member = true
-    end
+    @current_store_member = true if @store.user_id == current_user.id
   end
 
   # 店舗ページの管理者であればtrueを返すようにする
@@ -51,9 +48,6 @@ class AdminsController < ApplicationController
         @current_store_admin = false
       end
     end
-    if @store.user_id == @user.id
-      @current_store_admin = true
-    end
+    @current_store_admin = true if @store.user_id == @user.id
   end
-
 end

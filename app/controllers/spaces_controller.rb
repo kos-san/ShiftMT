@@ -1,5 +1,4 @@
 class SpacesController < ApplicationController
-
   def index
     @user = User.create
     @stores = Store.all
@@ -8,5 +7,4 @@ class SpacesController < ApplicationController
 
   def infomation
   end
-
 end
