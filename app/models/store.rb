@@ -13,5 +13,10 @@ class Store < ApplicationRecord
     validates :tel
   end
 
-  validates :tel, uniqueness: true
+
+  with_options uniqueness: true do
+    validates :tel
+    validates :store_name
+  end
+
 end

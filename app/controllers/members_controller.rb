@@ -5,6 +5,7 @@ class MembersController < ApplicationController
   def index
     @message = "#{@store.store_name}のスタッフ一覧"
     @delete_message = params[:delete_message]
+    @admins = Admin.where(store_id: @store.id)
   end
 
   def show

@@ -6,6 +6,21 @@
 </div>
 <% end %>
 
+
+<section class="section">
+  <h2 class="is-size-4">管理者情報</h2>
+  <table class="table is-striped">
+    <% @admins.each do |admin|%>
+      <%user = User.find(admin.member.user_id)%>
+      <tr>
+        <td>
+          <%= user.name %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+
 <section class="section" style="display:flex;">
   <% @store.members.each do |member|%>
     <table class="table is-sprited" style="border-right:1px solid black;">
@@ -29,3 +44,7 @@
     </table>
   <% end %>
 </section>
+
+
+
+
