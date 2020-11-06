@@ -146,3 +146,14 @@
  
 
 </section>
+
+<script>
+   $('.close').click(function() {
+    $('.test').css('display','none');
+  });
+
+  $('.infomation').click(function() {
+    $(this).find('.cation').fadeOut();
+    $(this).find('#infomation').fadeIn();
+  });
+</script>
