@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header is-success">
   <%= link_to "ShiftMT", root_path, class: "logo"%>
   <div class="user-sign">
     <% if user_signed_in? %>
@@ -31,7 +31,7 @@
           </div>
         
         </div>
-        <%= link_to "新規登録はこちらから", new_user_registration_path, class: "signup-btn"%>
+        <%= link_to "新規登録", new_user_registration_path, class: "signup-btn"%>
 
       <% end %>
     <% end %>
