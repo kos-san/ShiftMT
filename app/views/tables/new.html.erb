@@ -73,8 +73,8 @@
           <td>
             <% day = params[:day]%>
             <%= form_with model: [@store,@table], local: true do |f|%>
-              <%= f.text_field :workday, value:"#{@shift.workday}"%>
-              <%= f.text_field :user_id, value:"#{@shift.user.id}"%>
+              <%= f.text_field :workday, value:"#{@shift.workday}", type: "hidden"%>
+              <%= f.text_field :user_id, value:"#{@shift.user.id}", type: "hidden"%>
               希望時間<br>
               <%= f.time_field :start%>から<br>
               <%= f.time_field :ending %>まで<br>
