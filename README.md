@@ -127,14 +127,15 @@ VSCode
 | ------ | --------- | ------------------------------ |
 | store  | reference | null: false, foreign_key: true |
 | user   | reference | null: false, foreign,key: true |
+| admin  | boolean   | default: false                 |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :store
-- has_many   :admins
+<!-- - has_many   :admins -->
 
-## admins テーブル
+<!-- ## admins テーブル
 
 | Column | Type      | Options                        |
 | ------ | --------- | ------------------------------ |
@@ -144,7 +145,7 @@ VSCode
 ### Association
 
 - belongs_to :member
-- belongs_to :store
+- belongs_to :store -->
 
 ## shifts テーブル
 
