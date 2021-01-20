@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   def index
     @message = "#{@store.store_name}のスタッフ一覧"
     @delete_message = params[:delete_message]
-    @admins = Admin.where(store_id: @store.id)
+    @members = Member.where(store_id: @store.id)
   end
 
   def show
@@ -50,17 +50,14 @@ class MembersController < ApplicationController
 
   # 店舗ページの管理者であればtrueを返すようにする
   def set_admin
-    @member = Member.find(params[:id])
-    @user = User.find(@member.user_id)
-    @store = Store.find(params[:store_id])
-    @store.admins.each do |admin|
-      if admin.member.user_id == @user.id
-        return @current_store_admin = true
-      else
-        @current_store_admin = false
+    @admin = false
+    @store = Store.find(params[:id])
+    @members = Member.where(store_id: @store.id)
+    @members.each do |member|
+      if  member.user_id == current_user.id && member.admin == true
+        @admin = true
       end
     end
-    @current_store_admin = true if @store.user_id == @user.id
   end
 
   def set_store

@@ -16,7 +16,7 @@
         <%= link_to "業務連絡", store_contacts_path(@store)%><br>
       </div>
 
-      <% if @current_store_admin %>
+      <% if @admin == true %>
         <div class="store-menu">
           <h1 class="menu">管理者画面</h1>
           <%=link_to "スタッフ一覧", store_members_path(@store.id)%><br>

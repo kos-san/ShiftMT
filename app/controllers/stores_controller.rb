@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_member, only: [:index, :show]
+  # before_action :set_member, only: [:index, :show]
   before_action :set_admin, only: [:index, :show, :destroy]
 
   def index
@@ -12,11 +12,12 @@ class StoresController < ApplicationController
   end
 
   def show
+    @store = Store.find(params[:id])
     @stores = Store.all
     @members = Member.all
     @member = Member.where(user_id: current_user.id)
-    @admin = Admin.where(member_id: @member[0].id) if current_user.id != @store.user_id
-    redirect_to root_path unless @current_store_member
+    # @admin = Admin.where(member_id: @member[0].id) if current_user.id != @store.user_id
+    # redirect_to root_path unless @store.member.user_id == current_user_id
   end
 
   def destroy
@@ -72,15 +73,14 @@ class StoresController < ApplicationController
 
   # 店舗ページの管理者であればtrueを返すようにする
   def set_admin
+    @admin = false
     @store = Store.find(params[:id])
-    @store.admins.each do |admin|
-      if admin.member.user_id == current_user.id
-        return @current_store_admin = true
-      else
-        @current_store_admin = false
+    @members = Member.where(store_id: @store.id)
+    @members.each do |member|
+      if  member.user_id == current_user.id && member.admin == true
+        @admin = true
       end
     end
-    @current_store_admin = true if @store.user_id == current_user.id
   end
 
   def store_params
