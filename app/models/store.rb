@@ -1,6 +1,5 @@
 class Store < ApplicationRecord
   has_many :members
-  has_many :admins
   belongs_to :user
   has_many :shifts
   has_many :tables

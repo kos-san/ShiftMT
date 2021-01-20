@@ -48,6 +48,7 @@ class StoresController < ApplicationController
     @store = Store.new(store_params)
     if @store.valid?
       @store.save
+      @member = Member.create(user_id: @store.user_id, store_id: @store.id, admin: true)
       redirect_to spaces_path
     else
       render :new

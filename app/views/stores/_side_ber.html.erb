@@ -12,12 +12,6 @@
     <% end %>
   </ul>
 <% end %>
-<% @stores.each do |store| %>
-  <ul>
-      <% if (store.user_id == current_user.id)%>
-      <li class="store-list button is-large"> <%= link_to store.store_name, store_path(store.id), style: "color:black;"%></li>
-      <% end %>
-  </ul>
-    <% end %>
+
     <% end %>
 </div>
